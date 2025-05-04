@@ -427,7 +427,7 @@ export default function TeamManagement() {
 
       const usersResult = await supabase
         .from('User')
-        .select('*')
+        .select('*, role:Role(*)')
         .order('createdAt', { ascending: false });
 
       if (usersResult.error) {
@@ -577,6 +577,7 @@ export default function TeamManagement() {
             lastName,
             passwordHash: DEFAULT_PASSWORD_HASH,
             roleId: agentRole.id,
+            brokerId: agent.brokerId,
             status: 'pending',
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
