@@ -99,7 +99,15 @@ model Document {
 }
 
 model Agent {
-  id        String   @id @default(uuid())
-  userId    String?
-  ...
+  id               String   @id @default(uuid())
+  userId           String?
+  brokerId         String
+  status           String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  email            String
+  name             String
+  invitationSentAt DateTime?
+  firstName        String?
+  lastName         String?
 }
